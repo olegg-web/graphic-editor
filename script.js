@@ -1,90 +1,107 @@
-"use strict";
 window.addEventListener("load", function onWindowLoad() {
-  let canvas = document.querySelector('#canvas');
-  let context = canvas.getContext('2d');
-  let boxPoint = document.getElementById('boxPoint');
-  let range = document.getElementById('range');
-  let coordinates = document.getElementById('coordinates');
-  generatePalette(document.getElementById("palette"));
+	let canvas = document.querySelector('#canvas');
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+	let context = canvas.getContext('2d');
+	context.lineCap = "round";
+	let boxPoint = document.querySelector('#boxPoint');
+	let range = document.querySelector('#range');
+	let coordinates = document.querySelector('#coordinates');
+	let myColor;
+	generatePalette(document.querySelector("#palette"));
 
-  let myColor;
 
-  document.getElementById('color').oninput = function () {
-    myColor = this.value;
-  };
+	document.querySelector('#color').oninput = function changeColor(e) {
+		myColor = e.target.value;
+	}
 
-  document.getElementById('palette').onclick = function () {
-    myColor = this.value;
-  };
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+	document.querySelector(".eraser").onclick = function setWhiteColor() {
+		myColor = 'white';
 
-  context.lineCap = "round";
-  // выполняется при движение мыши 
-  canvas.onmousemove = function mouse(e) {
 
-    let x = e.offsetX;
-    let y = e.offsetY;
-    let dx = e.movementX;
-    let dy = e.movementY;
+	}
 
-    coordinates.innerHTML = "X : " + x + " px " + "&nbsp;&nbsp;" + " Y : " + y + " px";
+	// выполняется при движение мыши 
+	canvas.onmousemove = function mouseMove(e) {
+		let x = e.offsetX;
+		let y = e.offsetY;
+		let dx = e.movementX;
+		let dy = e.movementY;
 
-    // Проверяем зажата ли какая-нибудь кнопка мыши
-    if (e.buttons > 0) {
-      context.beginPath();
-      context.moveTo(x, y);
-      context.lineTo(x - dx, y - dy);
-      context.strokeStyle = myColor;
-      context.stroke();
-      context.closePath();
-    }
-  };
-  range.onchange = function sizePoint(e) {
-    context.lineWidth = e.target.value;
-  }
-  range.oninput = function boxPointNumber(e) {
-    boxPoint.innerHTML = e.target.value;
-  }
+		coordinates.innerHTML = "X : " + x + " px " + "&nbsp;" + " Y : " + y + " px";
 
-  document.getElementById("buttonClear").onclick = function clear() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-  };
+		// Проверяем зажата ли какая-нибудь кнопка мыши
+		if (e.buttons > 0) {
+			context.beginPath();
+			context.moveTo(x, y);
+			context.lineTo(x - dx, y - dy);
+			context.strokeStyle = myColor;
+			context.stroke();
+			context.closePath();
+		}
+	}
 
-  function clear() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-  }
+	range.oninput = function boxPointNumber(e) {
+		boxPoint.innerHTML = e.target.value;
+		context.lineWidth = e.target.value;
+	}
 
-  document.addEventListener('keydown', function (e) {
-    if (e.keyCode == 68) {
-      clear();
-    };
-  })
+	// document.querySelector('#buttonClear').onclick = clear();
 
-  function generatePalette(palette) {
+	// document.keydown = function (e) {
+	// 	if (e.keyCode == 32) {
+	// 		clear();
+	// 	}
+	// }
 
-    for (var r = 0, max = 2; r <= max; r++) {
-      for (var g = 0; g <= max; g++) {
-        for (var b = 0; b <= max; b++) {
-          var paletteBlock = document.createElement('div');
-          paletteBlock.className = 'paletteBox';
-          paletteBlock.addEventListener('click', function changeColor(e) {
-            context.strokeStyle = e.target.style.backgroundColor;
-          });
+	// function clear() {
+	// 	context.clearRect(0, 0, canvas.width, canvas.height);
+	// }
 
-          paletteBlock.style.backgroundColor = (
-            'rgb(' + Math.round(r * 255 / max) + ", "
-            + Math.round(g * 255 / max) + ", "
-            + Math.round(b * 255 / max) + ")"
-          );
+	document.getElementById("buttonClear").onclick = function clear() {
+		context.clearRect(0, 0, canvas.width, canvas.height);
+	};
 
-          palette.appendChild(paletteBlock);
-        }
-      }
-    }
-  };
+	function clear() {
+		context.clearRect(0, 0, canvas.width, canvas.height);
+	}
 
+	document.addEventListener('keydown', function (e) {
+		if (e.keyCode == 68) {
+			clear();
+		};
+	})
+
+	//сохранение
+	// document.getElementById("buttonSave").onclick = function save(){
+	download_img = function (e) {
+		var image = canvas.toDataURL("image/jpg");
+		e.href = image;
+
+	}
+
+	function generatePalette(palette) {
+		for (var r = 0, max = 2; r <= max; r++) {
+			for (var g = 0; g <= max; g++) {
+				for (var b = 0; b <= max; b++) {
+					var paletteBlock = document.createElement('div');
+					paletteBlock.className = 'paletteBox';
+					paletteBlock.addEventListener('click', function changeColor(e) {
+						myColor = e.target.style.backgroundColor;
+					});
+
+					paletteBlock.style.backgroundColor = (
+						'rgb(' + Math.round(r * 255 / max) + ", " +
+						Math.round(g * 255 / max) + ", " +
+						Math.round(b * 255 / max) + ")"
+					);
+
+					palette.appendChild(paletteBlock);
+				}
+			}
+		}
+	}
 });
 
 
@@ -92,13 +109,4 @@ window.addEventListener("load", function onWindowLoad() {
 
 
 
-
-
-// context.globalCompositeOperation = 'destination-out'; // 
-// context.fillStyle="rgba(255,255,255,1)"; // зададим белый цвет
-// context.beginPath(); 
-// context.arc(120, 80, 70, 0, Math.PI*2, FALSE); 
-// context.closePath(); 
-// context.fill(); 
-// context.globalCompositeOperation = "source-over"; // 
 

@@ -4,6 +4,10 @@ body {
     overflow: hidden;
 }
 
+/* #canvas, #temp{
+    position: absolute;
+  } */
+
 .tooble {
     width: 100%;
     height: 110px;
@@ -15,13 +19,12 @@ body {
 }
 
 .box {
-    width: 33%;
     height: 90px;
     border: solid 1px #bccae0;
     margin: 5px;
     display: flex;
     align-items: center;
-    padding-left: 10px;
+    /* padding-left: 10px; */
 }
 
 #buttonClear {
@@ -30,7 +33,7 @@ body {
     border: #a3acbb 1px solid;
     border-radius: 5px;
     text-align: center;
-    background-color: #bccae0;
+    background-color: #fccece;
     user-select: none;
 }
 
@@ -57,7 +60,7 @@ body {
     border: #a3acbb 1px solid;
     border-radius: 5px;
     text-align: center;
-    background-color: #55c588;
+    background-color: #abf3cc;
     user-select: none;
 }
 
@@ -92,15 +95,92 @@ input[type="color"] {
     height: 50px;
     border: none;
     margin-top: 27px;
+    margin-left: 20px;
     background-color: rgba(0, 0, 0, 0);
 }
 
-.two {
-    display: block
+.one {
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
 }
 
-.two p {
-    margin: 7px 0 10px 20px;
+.two {
+    display: flex;
+    width: 33%;
+}
+
+.wrapOne {
+    width: 100%;
+    justify-content: center;
+}
+
+.wrapTwo {
+    width: 100%;
+    display: block;
+    margin-top: -16px;
+}
+
+.wrapTwo p {
+    text-align: center;
+    padding-top: 5px;
+}
+
+.wrapOne p {
+    margin: 7px 0 10px 25px;
+}
+
+.eraser {
+    text-align: center;
+    width: 50px;
+    height: 36px;
+    border: solid 1px #a3b2c9;
+    margin: 0 auto;
+}
+
+.eraser img {
+    width: 35px;
+    height: 35px;
+}
+
+.eraser:hover {
+    box-shadow: 0 0 0 60px rgb(155, 174, 179) inset;
+}
+
+.eraser:active {
+    box-shadow: 0 0 0 60px rgb(173, 225, 231) inset;
+}
+
+.line:hover {
+    box-shadow: 0 0 0 60px rgb(155, 174, 179) inset;
+}
+
+.line:active {
+    box-shadow: 0 0 0 60px rgb(173, 225, 231) inset;
+}
+
+.line img {
+    width: 35px;
+    height: 35px;
+}
+
+.wrapTree {
+    width: 100%;
+    display: block;
+    margin-top: -16px;
+}
+
+.wrapTree p {
+    text-align: center;
+    padding-top: 5px;
+}
+
+.line {
+    text-align: center;
+    width: 50px;
+    height: 36px;
+    border: solid 1px #a3b2c9;
+    margin: 0 auto;
 }
 
 #boxPoint {
@@ -108,12 +188,13 @@ input[type="color"] {
     height: 17px;
     background-color: rgba(255, 255, 255, 0.486);
     text-align: center;
-    margin: 0px 0 8px 50px;
+    margin: 0px 0 8px 55px;
     border: solid 1px #bccae0;
     border-radius: 3px;
 }
 
 .slider {
+    margin-left: 5px;
     display: inline;
 }
 
@@ -139,8 +220,8 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 .paletteBox {
-    width: 17px;
-    height: 17px;
+    width: 19px;
+    height: 19px;
     border-radius: 50%;
     display: inline-block;
     margin: 1px;
@@ -153,7 +234,7 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 .paletteBox:active {
-    border: solid 1px #ff0;
+    border: solid 1px rgb(255, 0, 0);
 }
 
 #palette, #canvas {
@@ -180,4 +261,9 @@ input[type='range']::-webkit-slider-thumb {
 #coordinates {
     font-size: 14px;
     margin-left: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
 }
