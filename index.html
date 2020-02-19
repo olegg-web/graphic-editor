@@ -12,34 +12,42 @@
 
 <body>
     <div class="tooble">
-        <div class="box one">
-            <div id="buttonClear">
-                <p>Очистить изображение</p>
+        <div class="block boxOne">
+            <div class="caption">
+                <p>Изображение</p>
+            </div>
+            <div class="buttonBox  ">
+                <div id="buttonClear">
+                    <p>Очистить изображение</p>
+                </div>
+
+                <a id="download" download="myImage.jpg" href="" onclick="download_img(this);">
+                    <div id="buttonSave">Сохранить изображение</div>
+                </a>
             </div>
 
-            <a id="download" download="myImage.jpg" href="" onclick="download_img(this);">
-                <div id="buttonSave">Сохранить изображение</div>
-            </a>
 
         </div>
-        <div class="box two">
+        <div class="block boxTwo">
             <!-- <a id="download" download="myImage.jpg" href="" onclick = "download_img(this);">скачать</a> -->
-            <div class="wrapOne">
+            <div class="blockSlider">
                 <p>Толщина линии</p>
                 <div id="boxPoint">1</div>
                 <div class="slider"><input type='range' min="1" max="60" step="1" value="1" id="range" /></div>
             </div>
-            <div class="wrapTwo">
+            <div class="blockEraser">
                 <p>Ластик</p>
                 <div class="eraser"><img src="img/eraser.png" alt="ластик"></div>
             </div>
-            <div class="wrapTree">
+            <div class="boxLine">
                 <p>Линия</p>
                 <div class="line"><img src="img/line.png" alt="линия"></div>
             </div>
         </div>
-        <div class="box tree">
+        <div class="block boxTree">
+
             <input type="color" id="color">
+
             <div class="paletteWrap">
                 <p>Палитра цветов</p>
                 <div id="palette"> </div>
@@ -48,10 +56,9 @@
     </div>
     <div class="paint">
         <canvas id="canvas"></canvas>
-        <!-- <canvas id="temp"></canvas> -->
-
     </div>
-    <div class="t-bottom">
+    <div class="bottomField {
+        ">
         <div id="coordinates"></div>
     </div>
     <script src="script.js"></script>

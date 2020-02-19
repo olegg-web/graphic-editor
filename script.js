@@ -18,8 +18,7 @@ window.addEventListener("load", function onWindowLoad() {
 
 	document.querySelector(".eraser").onclick = function setWhiteColor() {
 		myColor = 'white';
-
-
+		
 	}
 
 	// выполняется при движение мыши 
@@ -59,7 +58,7 @@ window.addEventListener("load", function onWindowLoad() {
 	// 	context.clearRect(0, 0, canvas.width, canvas.height);
 	// }
 
-	document.getElementById("buttonClear").onclick = function clear() {
+	document.querySelector("#buttonClear").onclick = function clear() {
 		context.clearRect(0, 0, canvas.width, canvas.height);
 	};
 
