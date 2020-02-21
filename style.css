@@ -133,22 +133,22 @@ input[type='range']::-webkit-slider-thumb {
     cursor: pointer;
 }
 
-.blockSlider p {
+.block-Slider p {
     margin: 7px 0 10px 40px;
 }
 
-.blockSlider {
+.block-Slider {
     width: 100%;
     justify-content: center;
 }
 
-.blockEraser {
+.block-Eraser {
     width: 100%;
     display: block;
     margin-top: -16px;
 }
 
-.blockEraser p {
+.block-Eraser p {
     text-align: center;
     padding-top: 5px;
 }
@@ -187,13 +187,13 @@ input[type='range']::-webkit-slider-thumb {
     height: 35px;
 }
 
-.boxLine {
+.block-Line {
     width: 100%;
     display: block;
     margin-top: -16px;
 }
 
-.boxLine p {
+.block-Line p {
     text-align: center;
     padding-top: 5px;
 }
